@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Click and Drag</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="items">
+    <div class="item item1"><img height="200" width="200" src="https://2.bp.blogspot.com/-R4-y5TIlFxk/Td2ZV-Bh_QI/AAAAAAAABi8/Tbls4kY1S3A/s1600/Queen+-+Queen.jpg" alt=""></div>
+    <div class="item item2"><img height="200" width="200" src="https://2.bp.blogspot.com/-mYPWNFuHcBM/Td2ZWkbroTI/AAAAAAAABjA/HxCUshdwK0c/s1600/Queen+-+Queen+II.jpg" alt=""></div>
+    <div class="item item3"><img height="200" width="200" src="https://4.bp.blogspot.com/-oRsU2DpLhfM/Td2ZXJ2FqXI/AAAAAAAABjE/ugMs0kiFWC8/s1600/Queen+-+Sheer+Heart+Attack.jpg" alt=""></div>
+    <div class="item item4"><img height="200" width="200" src="https://2.bp.blogspot.com/-T8bbufz6krM/Td2ZP7khM_I/AAAAAAAABiY/BCtx7ThRz3w/s1600/Queen+-+A+Day+at+the+Races.jpg" alt=""></div>
+    <div class="item item5"><img height="200" width="200" src="https://4.bp.blogspot.com/-jcU3avQjWyc/Td2ZVAy30bI/AAAAAAAABi4/XWDtEM5r-kw/s1600/Queen+-+News+of+the+World.JPG" alt=""></div>
+    <div class="item item6"><img height="200" width="200"  src="https://1.bp.blogspot.com/-XM-5h3Fi4lE/Td2ZTk53jWI/AAAAAAAABiw/WscMFyiD-kU/s1600/Queen+-+Jazz.jpg" alt=""></div>
+    <div class="item item7"><img height="200" width="200"  src="https://1.bp.blogspot.com/-V7QEwPhc2h8/Td2ZXvIz7LI/AAAAAAAABjI/OTHG2XYMRf4/s1600/Queen+-+The+Game.jpg" alt=""></div>
+    <div class="item item8"><img  height="200" width="200" src="https://3.bp.blogspot.com/-Uxy__aeyNUM/Td2ZR6OhzZI/AAAAAAAABik/M0nmaRZCdTo/s1600/Queen+-+Flash+Gordon.jpg" alt=""></div>
+    <div class="item item9"><img  height="200" width="200" src="https://4.bp.blogspot.com/-6UcPyWvYJY4/Td2ZST74VxI/AAAAAAAABio/0WWc-dPAmY0/s1600/Queen+-+Hot+Space.jpg" alt=""></div>
+    <div class="item item10"><img height="200" width="200"  src="https://2.bp.blogspot.com/-SOWHqqsoEZA/Td2ZY2jXCCI/AAAAAAAABjQ/sibW7iSFdDk/s1600/Queen+-+The+Works.jpg" alt=""></div>
+    <div class="item item11"><img height="200" width="200"  src="https://2.bp.blogspot.com/-qrP8xGlEVgI/Td2ZQj7mcBI/AAAAAAAABic/XBJLAhD-tDw/s1600/Queen+-+A+Kind+of+Magic.jpg" alt=""></div>
+    <div class="item item12"><img height="200" width="200"  src="https://1.bp.blogspot.com/-ArDZ9TCJHlA/Td2ZYfJ8_vI/AAAAAAAABjM/t34CtujQoZQ/s1600/Queen+-+The+Miracle.jpg" alt=""></div>
+    <div class="item item13"><img height="200" width="200"  src="https://3.bp.blogspot.com/-CStXi7OippM/Td2ZTG1AceI/AAAAAAAABis/067mFQXrVuM/s1600/Queen+-+Innuendo.jpg" alt=""></div>
+    <div class="item item14"><img height="200" width="200"  src="https://2.bp.blogspot.com/-W1nK1BnpQm8/Td2ZUZDUsAI/AAAAAAAABi0/SrcHk1yy4DM/s1600/Queen+-+Made+in+Heaven.jpg" alt=""></div>   
+  </div>
+
+<script>
+  const slider = document.querySelector('.items');
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  slider.addEventListener('mousedown', (e) => {
+    isDown = true;
+    slider.classList.add('active');
+    startX = e.pageX - slider.offsetLeft;
+    scrollLeft = slider.scrollLeft;
+  });
+
+  slider.addEventListener('mouseleave', () => {
+    isDown = false;
+    slider.classList.remove('active');
+  });
+
+  slider.addEventListener('mouseup', () => {
+    isDown = false;
+    slider.classList.remove('active');
+  });
+
+  slider.addEventListener('mousemove', (e) => {
+    if (!isDown) return;  // stop the fn from running
+    e.preventDefault();
+    const x = e.pageX - slider.offsetLeft;
+    const walk = (x - startX) * 2;
+    slider.scrollLeft = scrollLeft - walk;
+  });
+
+</script>
+
+  </body>
+</html>
